@@ -20,68 +20,68 @@ namespace Io.Xpx.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IDataHashApi : IApiAccessor
+    public interface IDirectoryLoadApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Generates the datahash but doesn&#39;t upload the file on the network
+        /// Loads a Static Content.
         /// </summary>
         /// <remarks>
-        /// This endpoint can be used to generates the datahash and uploads the file in the process.
+        /// Loads a Static Content.
         /// </remarks>
         /// <exception cref="Io.Xpx.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="data">Free form string data that will be stored on the P2P Network</param>
-        /// <returns>string</returns>
-        string GenerateHashForDataOnlyUsingPOST (byte[] data);
+        /// <param name="nemHash">NEM Txn (Public) linked to the directory</param>
+        /// <returns>Object</returns>
+        Object LoadDirectoryUsingGET (string nemHash);
 
         /// <summary>
-        /// Generates the datahash but doesn&#39;t upload the file on the network
+        /// Loads a Static Content.
         /// </summary>
         /// <remarks>
-        /// This endpoint can be used to generates the datahash and uploads the file in the process.
+        /// Loads a Static Content.
         /// </remarks>
         /// <exception cref="Io.Xpx.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="data">Free form string data that will be stored on the P2P Network</param>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> GenerateHashForDataOnlyUsingPOSTWithHttpInfo (byte[] data);
+        /// <param name="nemHash">NEM Txn (Public) linked to the directory</param>
+        /// <returns>ApiResponse of Object</returns>
+        ApiResponse<Object> LoadDirectoryUsingGETWithHttpInfo (string nemHash);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Generates the datahash but doesn&#39;t upload the file on the network
+        /// Loads a Static Content.
         /// </summary>
         /// <remarks>
-        /// This endpoint can be used to generates the datahash and uploads the file in the process.
+        /// Loads a Static Content.
         /// </remarks>
         /// <exception cref="Io.Xpx.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="data">Free form string data that will be stored on the P2P Network</param>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> GenerateHashForDataOnlyUsingPOSTAsync (byte[] data);
+        /// <param name="nemHash">NEM Txn (Public) linked to the directory</param>
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> LoadDirectoryUsingGETAsync (string nemHash);
 
         /// <summary>
-        /// Generates the datahash but doesn&#39;t upload the file on the network
+        /// Loads a Static Content.
         /// </summary>
         /// <remarks>
-        /// This endpoint can be used to generates the datahash and uploads the file in the process.
+        /// Loads a Static Content.
         /// </remarks>
         /// <exception cref="Io.Xpx.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="data">Free form string data that will be stored on the P2P Network</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> GenerateHashForDataOnlyUsingPOSTAsyncWithHttpInfo (byte[] data);
+        /// <param name="nemHash">NEM Txn (Public) linked to the directory</param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> LoadDirectoryUsingGETAsyncWithHttpInfo (string nemHash);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class DataHashApi : IDataHashApi
+    public partial class DirectoryLoadApi : IDirectoryLoadApi
     {
         private Io.Xpx.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DataHashApi"/> class.
+        /// Initializes a new instance of the <see cref="DirectoryLoadApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public DataHashApi(String basePath)
+        public DirectoryLoadApi(String basePath)
         {
             this.Configuration = new Configuration(new ApiClient(basePath));
 
@@ -95,12 +95,12 @@ namespace Io.Xpx.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DataHashApi"/> class
+        /// Initializes a new instance of the <see cref="DirectoryLoadApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public DataHashApi(Configuration configuration = null)
+        public DirectoryLoadApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
@@ -180,30 +180,30 @@ namespace Io.Xpx.Api
         }
 
         /// <summary>
-        /// Generates the datahash but doesn&#39;t upload the file on the network This endpoint can be used to generates the datahash and uploads the file in the process.
+        /// Loads a Static Content. Loads a Static Content.
         /// </summary>
         /// <exception cref="Io.Xpx.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="data">Free form string data that will be stored on the P2P Network</param>
-        /// <returns>string</returns>
-        public string GenerateHashForDataOnlyUsingPOST (byte[] data)
+        /// <param name="nemHash">NEM Txn (Public) linked to the directory</param>
+        /// <returns>Object</returns>
+        public Object LoadDirectoryUsingGET (string nemHash)
         {
-             ApiResponse<string> localVarResponse = GenerateHashForDataOnlyUsingPOSTWithHttpInfo(data);
+             ApiResponse<Object> localVarResponse = LoadDirectoryUsingGETWithHttpInfo(nemHash);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Generates the datahash but doesn&#39;t upload the file on the network This endpoint can be used to generates the datahash and uploads the file in the process.
+        /// Loads a Static Content. Loads a Static Content.
         /// </summary>
         /// <exception cref="Io.Xpx.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="data">Free form string data that will be stored on the P2P Network</param>
-        /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > GenerateHashForDataOnlyUsingPOSTWithHttpInfo (byte[] data)
+        /// <param name="nemHash">NEM Txn (Public) linked to the directory</param>
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse< Object > LoadDirectoryUsingGETWithHttpInfo (string nemHash)
         {
-            // verify the required parameter 'data' is set
-            if (data == null)
-                throw new ApiException(400, "Missing required parameter 'data' when calling DataHashApi->GenerateHashForDataOnlyUsingPOST");
+            // verify the required parameter 'nemHash' is set
+            if (nemHash == null)
+                throw new ApiException(400, "Missing required parameter 'nemHash' when calling DirectoryLoadApi->LoadDirectoryUsingGET");
 
-            var localVarPath = "/datahash/hash-only";
+            var localVarPath = "/directory/load/{nemHash}/**";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -213,72 +213,65 @@ namespace Io.Xpx.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "multipart/form-data"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
+                "*/*"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (data != null && data.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(data); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = data; // byte array
-            }
+            if (nemHash != null) localVarPathParams.Add("nemHash", Configuration.ApiClient.ParameterToString(nemHash)); // path parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GenerateHashForDataOnlyUsingPOST", localVarResponse);
+                Exception exception = ExceptionFactory("LoadDirectoryUsingGET", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (string) Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (Object) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
-        /// Generates the datahash but doesn&#39;t upload the file on the network This endpoint can be used to generates the datahash and uploads the file in the process.
+        /// Loads a Static Content. Loads a Static Content.
         /// </summary>
         /// <exception cref="Io.Xpx.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="data">Free form string data that will be stored on the P2P Network</param>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> GenerateHashForDataOnlyUsingPOSTAsync (byte[] data)
+        /// <param name="nemHash">NEM Txn (Public) linked to the directory</param>
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> LoadDirectoryUsingGETAsync (string nemHash)
         {
-             ApiResponse<string> localVarResponse = await GenerateHashForDataOnlyUsingPOSTAsyncWithHttpInfo(data);
+             ApiResponse<Object> localVarResponse = await LoadDirectoryUsingGETAsyncWithHttpInfo(nemHash);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Generates the datahash but doesn&#39;t upload the file on the network This endpoint can be used to generates the datahash and uploads the file in the process.
+        /// Loads a Static Content. Loads a Static Content.
         /// </summary>
         /// <exception cref="Io.Xpx.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="data">Free form string data that will be stored on the P2P Network</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> GenerateHashForDataOnlyUsingPOSTAsyncWithHttpInfo (byte[] data)
+        /// <param name="nemHash">NEM Txn (Public) linked to the directory</param>
+        /// <returns>Task of ApiResponse (Object)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> LoadDirectoryUsingGETAsyncWithHttpInfo (string nemHash)
         {
-            // verify the required parameter 'data' is set
-            if (data == null)
-                throw new ApiException(400, "Missing required parameter 'data' when calling DataHashApi->GenerateHashForDataOnlyUsingPOST");
+            // verify the required parameter 'nemHash' is set
+            if (nemHash == null)
+                throw new ApiException(400, "Missing required parameter 'nemHash' when calling DirectoryLoadApi->LoadDirectoryUsingGET");
 
-            var localVarPath = "/datahash/hash-only";
+            var localVarPath = "/directory/load/{nemHash}/**";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -288,44 +281,37 @@ namespace Io.Xpx.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "multipart/form-data"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
+                "*/*"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (data != null && data.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(data); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = data; // byte array
-            }
+            if (nemHash != null) localVarPathParams.Add("nemHash", Configuration.ApiClient.ParameterToString(nemHash)); // path parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GenerateHashForDataOnlyUsingPOST", localVarResponse);
+                Exception exception = ExceptionFactory("LoadDirectoryUsingGET", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (string) Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (Object) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
     }

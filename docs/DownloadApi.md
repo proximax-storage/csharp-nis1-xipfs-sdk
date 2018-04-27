@@ -4,23 +4,20 @@ All URIs are relative to *http://localhost:8881*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DownloadPlainMessageFileUsingNemHashUsingGET**](DownloadApi.md#downloadplainmessagefileusingnemhashusingget) | **GET** /download/data/plain/{nemhash} | Download resource/file using NEM Transaction Hash
-[**DownloadRawBytesPlainMessageFileUsingNemHashUsingGET**](DownloadApi.md#downloadrawbytesplainmessagefileusingnemhashusingget) | **GET** /download/data/plain/rawbytes/{nemhash} | Download plain resource/file using NEM Transaction Hash
-[**DownloadRawBytesSecureMessageFileUsingNemHashUsingGET**](DownloadApi.md#downloadrawbytessecuremessagefileusingnemhashusingget) | **GET** /download/data/secure/rawbytes/{nemhash} | Download secured resource/file using NEM Transaction Hash
-[**DownloadRawBytesUsingHashUsingPOST**](DownloadApi.md#downloadrawbytesusinghashusingpost) | **POST** /download/data/rawbytes | Download secured encrypted resource/file using Data Hash
-[**DownloadSecureMessageFileUsingNemHashUsingGET**](DownloadApi.md#downloadsecuremessagefileusingnemhashusingget) | **GET** /download/data/secure/{nemhash} | Download resource/file using NEM Transaction Hash
-[**DownloadStreamPlainMessageFileUsingNemHashUsingGET**](DownloadApi.md#downloadstreamplainmessagefileusingnemhashusingget) | **GET** /download/data/plain/stream/{nemhash} | Download plain resource/file using NEM Transaction Hash
-[**DownloadStreamSecureMessageFileUsingNemHashUsingGET**](DownloadApi.md#downloadstreamsecuremessagefileusingnemhashusingget) | **GET** /download/data/secure/stream/{nemhash} | Download secured resource/file using NEM Transaction Hash
-[**DownloadStreamUsingHashUsingPOST**](DownloadApi.md#downloadstreamusinghashusingpost) | **POST** /download/data/stream | Download secured encrypted resource/file using Data Hash
+[**DownloadBinaryUsingGET**](DownloadApi.md#downloadbinaryusingget) | **GET** /download/binary | Download a binary using NEM Transaction Hash
+[**DownloadSecureBinaryUsingGET**](DownloadApi.md#downloadsecurebinaryusingget) | **GET** /download/secure/binary | Download a secure resource/blob using NEM Private Key and Transaction Hash
+[**DownloadSecureFileUsingGET**](DownloadApi.md#downloadsecurefileusingget) | **GET** /download/secure/file | Download a secure resource/file using NEM Private Key and Transaction Hash
+[**DownloadTextUsingGET**](DownloadApi.md#downloadtextusingget) | **GET** /download/text | Download a base64 encoded plain text data using NEM Transaction Hash
+[**DownloadUsingDataHashUsingGET**](DownloadApi.md#downloadusingdatahashusingget) | **GET** /download/direct/datahash | Download IPFS file associated to the datahash
 
 
-<a name="downloadplainmessagefileusingnemhashusingget"></a>
-# **DownloadPlainMessageFileUsingNemHashUsingGET**
-> ResponseEntity DownloadPlainMessageFileUsingNemHashUsingGET (string nemhash)
+<a name="downloadbinaryusingget"></a>
+# **DownloadBinaryUsingGET**
+> byte[] DownloadBinaryUsingGET (string nemHash, string transferMode)
 
-Download resource/file using NEM Transaction Hash
+Download a binary using NEM Transaction Hash
 
-This endpoint returns either a byte array format of the actual file OR a JSON format GenericMessageResponse.
+Download the binary file associated to a NEM Hash. If NEM Hash uses SECURE Message, it returns the NEM TXN Payload Instead
 
 ### Example
 ```csharp
@@ -32,22 +29,23 @@ using Io.Xpx.Model;
 
 namespace Example
 {
-    public class DownloadPlainMessageFileUsingNemHashUsingGETExample
+    public class DownloadBinaryUsingGETExample
     {
         public void main()
         {
             var apiInstance = new DownloadApi();
-            var nemhash = nemhash_example;  // string | The NEM Transaction Hash
+            var nemHash = nemHash_example;  // string | The NEM Transaction Hash
+            var transferMode = transferMode_example;  // string | Transfer Mode default: bytes (bytes,stream,base64)
 
             try
             {
-                // Download resource/file using NEM Transaction Hash
-                ResponseEntity result = apiInstance.DownloadPlainMessageFileUsingNemHashUsingGET(nemhash);
+                // Download a binary using NEM Transaction Hash
+                byte[] result = apiInstance.DownloadBinaryUsingGET(nemHash, transferMode);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DownloadApi.DownloadPlainMessageFileUsingNemHashUsingGET: " + e.Message );
+                Debug.Print("Exception when calling DownloadApi.DownloadBinaryUsingGET: " + e.Message );
             }
         }
     }
@@ -58,68 +56,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **nemhash** | **string**| The NEM Transaction Hash | 
-
-### Return type
-
-[**ResponseEntity**](ResponseEntity.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="downloadrawbytesplainmessagefileusingnemhashusingget"></a>
-# **DownloadRawBytesPlainMessageFileUsingNemHashUsingGET**
-> byte[] DownloadRawBytesPlainMessageFileUsingNemHashUsingGET (string nemhash)
-
-Download plain resource/file using NEM Transaction Hash
-
-This endpoint returns a byte array format of the actual file
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using Io.Xpx.Api;
-using Io.Xpx.Client;
-using Io.Xpx.Model;
-
-namespace Example
-{
-    public class DownloadRawBytesPlainMessageFileUsingNemHashUsingGETExample
-    {
-        public void main()
-        {
-            var apiInstance = new DownloadApi();
-            var nemhash = nemhash_example;  // string | The NEM Transaction Hash
-
-            try
-            {
-                // Download plain resource/file using NEM Transaction Hash
-                byte[] result = apiInstance.DownloadRawBytesPlainMessageFileUsingNemHashUsingGET(nemhash);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DownloadApi.DownloadRawBytesPlainMessageFileUsingNemHashUsingGET: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **nemhash** | **string**| The NEM Transaction Hash | 
+ **nemHash** | **string**| The NEM Transaction Hash | 
+ **transferMode** | **string**| Transfer Mode default: bytes (bytes,stream,base64) | 
 
 ### Return type
 
@@ -136,76 +74,13 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="downloadrawbytessecuremessagefileusingnemhashusingget"></a>
-# **DownloadRawBytesSecureMessageFileUsingNemHashUsingGET**
-> byte[] DownloadRawBytesSecureMessageFileUsingNemHashUsingGET (string nemhash, string xPvkey = null)
+<a name="downloadsecurebinaryusingget"></a>
+# **DownloadSecureBinaryUsingGET**
+> byte[] DownloadSecureBinaryUsingGET (string xPvkey, string nemHash, string transferType)
 
-Download secured resource/file using NEM Transaction Hash
+Download a secure resource/blob using NEM Private Key and Transaction Hash
 
-This endpoint returns a byte array format of the actual file
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using Io.Xpx.Api;
-using Io.Xpx.Client;
-using Io.Xpx.Model;
-
-namespace Example
-{
-    public class DownloadRawBytesSecureMessageFileUsingNemHashUsingGETExample
-    {
-        public void main()
-        {
-            var apiInstance = new DownloadApi();
-            var nemhash = nemhash_example;  // string | The NEM Transaction Hash
-            var xPvkey = xPvkey_example;  // string | The Sender or Receiver's Private Key (optional) 
-
-            try
-            {
-                // Download secured resource/file using NEM Transaction Hash
-                byte[] result = apiInstance.DownloadRawBytesSecureMessageFileUsingNemHashUsingGET(nemhash, xPvkey);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DownloadApi.DownloadRawBytesSecureMessageFileUsingNemHashUsingGET: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **nemhash** | **string**| The NEM Transaction Hash | 
- **xPvkey** | **string**| The Sender or Receiver&#39;s Private Key | [optional] 
-
-### Return type
-
-**byte[]**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="downloadrawbytesusinghashusingpost"></a>
-# **DownloadRawBytesUsingHashUsingPOST**
-> byte[] DownloadRawBytesUsingHashUsingPOST (string hash)
-
-Download secured encrypted resource/file using Data Hash
-
-This endpoint returns a byte array format of the actual encrypted file
+Download a blob associated to a NEM Hash. If NEM Hash uses SECURE Message, it returns the NEM TXN Payload Instead
 
 ### Example
 ```csharp
@@ -217,84 +92,24 @@ using Io.Xpx.Model;
 
 namespace Example
 {
-    public class DownloadRawBytesUsingHashUsingPOSTExample
-    {
-        public void main()
-        {
-            var apiInstance = new DownloadApi();
-            var hash = hash_example;  // string | The Data Hash
-
-            try
-            {
-                // Download secured encrypted resource/file using Data Hash
-                byte[] result = apiInstance.DownloadRawBytesUsingHashUsingPOST(hash);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DownloadApi.DownloadRawBytesUsingHashUsingPOST: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **hash** | **string**| The Data Hash | 
-
-### Return type
-
-**byte[]**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="downloadsecuremessagefileusingnemhashusingget"></a>
-# **DownloadSecureMessageFileUsingNemHashUsingGET**
-> ResponseEntity DownloadSecureMessageFileUsingNemHashUsingGET (string xPvkey, string nemhash)
-
-Download resource/file using NEM Transaction Hash
-
-This endpoint returns either a byte array format of the actual file OR a JSON format GenericMessageResponse.
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using Io.Xpx.Api;
-using Io.Xpx.Client;
-using Io.Xpx.Model;
-
-namespace Example
-{
-    public class DownloadSecureMessageFileUsingNemHashUsingGETExample
+    public class DownloadSecureBinaryUsingGETExample
     {
         public void main()
         {
             var apiInstance = new DownloadApi();
             var xPvkey = xPvkey_example;  // string | The Sender or Receiver's Private Key
-            var nemhash = nemhash_example;  // string | The NEM Transaction Hash
+            var nemHash = nemHash_example;  // string | The NEM Transaction Hash
+            var transferType = transferType_example;  // string | Transfer Type default: bytes (bytes,stream,base64)
 
             try
             {
-                // Download resource/file using NEM Transaction Hash
-                ResponseEntity result = apiInstance.DownloadSecureMessageFileUsingNemHashUsingGET(xPvkey, nemhash);
+                // Download a secure resource/blob using NEM Private Key and Transaction Hash
+                byte[] result = apiInstance.DownloadSecureBinaryUsingGET(xPvkey, nemHash, transferType);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DownloadApi.DownloadSecureMessageFileUsingNemHashUsingGET: " + e.Message );
+                Debug.Print("Exception when calling DownloadApi.DownloadSecureBinaryUsingGET: " + e.Message );
             }
         }
     }
@@ -306,68 +121,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xPvkey** | **string**| The Sender or Receiver&#39;s Private Key | 
- **nemhash** | **string**| The NEM Transaction Hash | 
-
-### Return type
-
-[**ResponseEntity**](ResponseEntity.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="downloadstreamplainmessagefileusingnemhashusingget"></a>
-# **DownloadStreamPlainMessageFileUsingNemHashUsingGET**
-> byte[] DownloadStreamPlainMessageFileUsingNemHashUsingGET (string nemhash)
-
-Download plain resource/file using NEM Transaction Hash
-
-This endpoint returns a byte array format of the actual file
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using Io.Xpx.Api;
-using Io.Xpx.Client;
-using Io.Xpx.Model;
-
-namespace Example
-{
-    public class DownloadStreamPlainMessageFileUsingNemHashUsingGETExample
-    {
-        public void main()
-        {
-            var apiInstance = new DownloadApi();
-            var nemhash = nemhash_example;  // string | The NEM Transaction Hash
-
-            try
-            {
-                // Download plain resource/file using NEM Transaction Hash
-                byte[] result = apiInstance.DownloadStreamPlainMessageFileUsingNemHashUsingGET(nemhash);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DownloadApi.DownloadStreamPlainMessageFileUsingNemHashUsingGET: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **nemhash** | **string**| The NEM Transaction Hash | 
+ **nemHash** | **string**| The NEM Transaction Hash | 
+ **transferType** | **string**| Transfer Type default: bytes (bytes,stream,base64) | 
 
 ### Return type
 
@@ -384,13 +139,13 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="downloadstreamsecuremessagefileusingnemhashusingget"></a>
-# **DownloadStreamSecureMessageFileUsingNemHashUsingGET**
-> byte[] DownloadStreamSecureMessageFileUsingNemHashUsingGET (string nemhash, string xPvkey = null)
+<a name="downloadsecurefileusingget"></a>
+# **DownloadSecureFileUsingGET**
+> byte[] DownloadSecureFileUsingGET (string xPvkey, string nemHash, string transferType)
 
-Download secured resource/file using NEM Transaction Hash
+Download a secure resource/file using NEM Private Key and Transaction Hash
 
-This endpoint returns a byte array format of the actual file
+Download a file associated to a NEM Hash. If NEM Hash uses SECURE Message, it returns the NEM TXN Payload Instead
 
 ### Example
 ```csharp
@@ -402,23 +157,24 @@ using Io.Xpx.Model;
 
 namespace Example
 {
-    public class DownloadStreamSecureMessageFileUsingNemHashUsingGETExample
+    public class DownloadSecureFileUsingGETExample
     {
         public void main()
         {
             var apiInstance = new DownloadApi();
-            var nemhash = nemhash_example;  // string | The NEM Transaction Hash
-            var xPvkey = xPvkey_example;  // string | The Sender or Receiver's Private Key (optional) 
+            var xPvkey = xPvkey_example;  // string | The Sender or Receiver's Private Key
+            var nemHash = nemHash_example;  // string | The NEM Transaction Hash
+            var transferType = transferType_example;  // string | Transfer Type default: bytes (bytes,stream,base64)
 
             try
             {
-                // Download secured resource/file using NEM Transaction Hash
-                byte[] result = apiInstance.DownloadStreamSecureMessageFileUsingNemHashUsingGET(nemhash, xPvkey);
+                // Download a secure resource/file using NEM Private Key and Transaction Hash
+                byte[] result = apiInstance.DownloadSecureFileUsingGET(xPvkey, nemHash, transferType);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DownloadApi.DownloadStreamSecureMessageFileUsingNemHashUsingGET: " + e.Message );
+                Debug.Print("Exception when calling DownloadApi.DownloadSecureFileUsingGET: " + e.Message );
             }
         }
     }
@@ -429,8 +185,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **nemhash** | **string**| The NEM Transaction Hash | 
- **xPvkey** | **string**| The Sender or Receiver&#39;s Private Key | [optional] 
+ **xPvkey** | **string**| The Sender or Receiver&#39;s Private Key | 
+ **nemHash** | **string**| The NEM Transaction Hash | 
+ **transferType** | **string**| Transfer Type default: bytes (bytes,stream,base64) | 
 
 ### Return type
 
@@ -447,13 +204,13 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="downloadstreamusinghashusingpost"></a>
-# **DownloadStreamUsingHashUsingPOST**
-> byte[] DownloadStreamUsingHashUsingPOST (string hash)
+<a name="downloadtextusingget"></a>
+# **DownloadTextUsingGET**
+> byte[] DownloadTextUsingGET (string nemHash, string transferMode)
 
-Download secured encrypted resource/file using Data Hash
+Download a base64 encoded plain text data using NEM Transaction Hash
 
-This endpoint returns a byte array format of the actual encrypted file
+Download a plain text data associated to a NEM Hash. If NEM Hash uses SECURE Message, it returns the NEM TXN Payload Instead
 
 ### Example
 ```csharp
@@ -465,22 +222,23 @@ using Io.Xpx.Model;
 
 namespace Example
 {
-    public class DownloadStreamUsingHashUsingPOSTExample
+    public class DownloadTextUsingGETExample
     {
         public void main()
         {
             var apiInstance = new DownloadApi();
-            var hash = hash_example;  // string | The Data Hash
+            var nemHash = nemHash_example;  // string | The NEM Transaction Hash
+            var transferMode = transferMode_example;  // string | Transfer Mode default: bytes (bytes,stream)
 
             try
             {
-                // Download secured encrypted resource/file using Data Hash
-                byte[] result = apiInstance.DownloadStreamUsingHashUsingPOST(hash);
+                // Download a base64 encoded plain text data using NEM Transaction Hash
+                byte[] result = apiInstance.DownloadTextUsingGET(nemHash, transferMode);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DownloadApi.DownloadStreamUsingHashUsingPOST: " + e.Message );
+                Debug.Print("Exception when calling DownloadApi.DownloadTextUsingGET: " + e.Message );
             }
         }
     }
@@ -491,7 +249,69 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **hash** | **string**| The Data Hash | 
+ **nemHash** | **string**| The NEM Transaction Hash | 
+ **transferMode** | **string**| Transfer Mode default: bytes (bytes,stream) | 
+
+### Return type
+
+**byte[]**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="downloadusingdatahashusingget"></a>
+# **DownloadUsingDataHashUsingGET**
+> byte[] DownloadUsingDataHashUsingGET (string dataHash)
+
+Download IPFS file associated to the datahash
+
+Download IPFS file associated to the datahash
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Io.Xpx.Api;
+using Io.Xpx.Client;
+using Io.Xpx.Model;
+
+namespace Example
+{
+    public class DownloadUsingDataHashUsingGETExample
+    {
+        public void main()
+        {
+            var apiInstance = new DownloadApi();
+            var dataHash = dataHash_example;  // string | The NEM Transaction Hash
+
+            try
+            {
+                // Download IPFS file associated to the datahash
+                byte[] result = apiInstance.DownloadUsingDataHashUsingGET(dataHash);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DownloadApi.DownloadUsingDataHashUsingGET: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dataHash** | **string**| The NEM Transaction Hash | 
 
 ### Return type
 

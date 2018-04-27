@@ -5,7 +5,7 @@ Proximax P2P Storage REST API
 Proximax P2P Storage REST API
 
 OpenAPI spec version: v0.0.1
-Contact: alvin.reyes@botmill.io
+Contact: proximax.storage@proximax.io
 -->
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
@@ -75,7 +75,7 @@ Contact: alvin.reyes@botmill.io
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\Io.Xpx\Io.Xpx.csproj">
-          <Project>{F34F915A-1C22-4AB0-88FE-29AE26108DED}</Project>
+          <Project>{ED571066-B89A-416E-8AFE-82E16FCA34D8}</Project>
           <Name>Io.Xpx</Name>
       </ProjectReference>
   </ItemGroup>

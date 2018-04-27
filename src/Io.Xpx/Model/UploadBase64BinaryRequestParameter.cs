@@ -25,22 +25,34 @@ using SwaggerDateConverter = Io.Xpx.Client.SwaggerDateConverter;
 namespace Io.Xpx.Model
 {
     /// <summary>
-    /// RequestAnnounceDataSignature
+    /// UploadBase64BinaryRequestParameter
     /// </summary>
     [DataContract]
-    public partial class RequestAnnounceDataSignature :  IEquatable<RequestAnnounceDataSignature>, IValidatableObject
+    public partial class UploadBase64BinaryRequestParameter :  IEquatable<UploadBase64BinaryRequestParameter>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RequestAnnounceDataSignature" /> class.
+        /// Initializes a new instance of the <see cref="UploadBase64BinaryRequestParameter" /> class.
         /// </summary>
+        /// <param name="ContentType">ContentType.</param>
         /// <param name="Data">Data.</param>
-        /// <param name="Signature">Signature.</param>
-        public RequestAnnounceDataSignature(string Data = default(string), string Signature = default(string))
+        /// <param name="Keywords">Keywords.</param>
+        /// <param name="Metadata">Metadata.</param>
+        /// <param name="Name">Name.</param>
+        public UploadBase64BinaryRequestParameter(string ContentType = default(string), string Data = default(string), string Keywords = default(string), string Metadata = default(string), string Name = default(string))
         {
+            this.ContentType = ContentType;
             this.Data = Data;
-            this.Signature = Signature;
+            this.Keywords = Keywords;
+            this.Metadata = Metadata;
+            this.Name = Name;
         }
         
+        /// <summary>
+        /// Gets or Sets ContentType
+        /// </summary>
+        [DataMember(Name="contentType", EmitDefaultValue=false)]
+        public string ContentType { get; set; }
+
         /// <summary>
         /// Gets or Sets Data
         /// </summary>
@@ -48,10 +60,22 @@ namespace Io.Xpx.Model
         public string Data { get; set; }
 
         /// <summary>
-        /// Gets or Sets Signature
+        /// Gets or Sets Keywords
         /// </summary>
-        [DataMember(Name="signature", EmitDefaultValue=false)]
-        public string Signature { get; set; }
+        [DataMember(Name="keywords", EmitDefaultValue=false)]
+        public string Keywords { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Metadata
+        /// </summary>
+        [DataMember(Name="metadata", EmitDefaultValue=false)]
+        public string Metadata { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Name
+        /// </summary>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,9 +84,12 @@ namespace Io.Xpx.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class RequestAnnounceDataSignature {\n");
+            sb.Append("class UploadBase64BinaryRequestParameter {\n");
+            sb.Append("  ContentType: ").Append(ContentType).Append("\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
-            sb.Append("  Signature: ").Append(Signature).Append("\n");
+            sb.Append("  Keywords: ").Append(Keywords).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -84,15 +111,15 @@ namespace Io.Xpx.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as RequestAnnounceDataSignature);
+            return this.Equals(obj as UploadBase64BinaryRequestParameter);
         }
 
         /// <summary>
-        /// Returns true if RequestAnnounceDataSignature instances are equal
+        /// Returns true if UploadBase64BinaryRequestParameter instances are equal
         /// </summary>
-        /// <param name="other">Instance of RequestAnnounceDataSignature to be compared</param>
+        /// <param name="other">Instance of UploadBase64BinaryRequestParameter to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(RequestAnnounceDataSignature other)
+        public bool Equals(UploadBase64BinaryRequestParameter other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -100,14 +127,29 @@ namespace Io.Xpx.Model
 
             return 
                 (
+                    this.ContentType == other.ContentType ||
+                    this.ContentType != null &&
+                    this.ContentType.Equals(other.ContentType)
+                ) && 
+                (
                     this.Data == other.Data ||
                     this.Data != null &&
                     this.Data.Equals(other.Data)
                 ) && 
                 (
-                    this.Signature == other.Signature ||
-                    this.Signature != null &&
-                    this.Signature.Equals(other.Signature)
+                    this.Keywords == other.Keywords ||
+                    this.Keywords != null &&
+                    this.Keywords.Equals(other.Keywords)
+                ) && 
+                (
+                    this.Metadata == other.Metadata ||
+                    this.Metadata != null &&
+                    this.Metadata.Equals(other.Metadata)
+                ) && 
+                (
+                    this.Name == other.Name ||
+                    this.Name != null &&
+                    this.Name.Equals(other.Name)
                 );
         }
 
@@ -122,10 +164,16 @@ namespace Io.Xpx.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
+                if (this.ContentType != null)
+                    hash = hash * 59 + this.ContentType.GetHashCode();
                 if (this.Data != null)
                     hash = hash * 59 + this.Data.GetHashCode();
-                if (this.Signature != null)
-                    hash = hash * 59 + this.Signature.GetHashCode();
+                if (this.Keywords != null)
+                    hash = hash * 59 + this.Keywords.GetHashCode();
+                if (this.Metadata != null)
+                    hash = hash * 59 + this.Metadata.GetHashCode();
+                if (this.Name != null)
+                    hash = hash * 59 + this.Name.GetHashCode();
                 return hash;
             }
         }
