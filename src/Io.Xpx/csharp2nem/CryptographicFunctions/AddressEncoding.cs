@@ -71,7 +71,7 @@ namespace CSharp2nem.CryptographicFunctions
 
             // step 7) return base 32 encode address byte array
 
-            return new Base32Encoder().Encode(stepSix).ToUpper();
+            return new Utils.Base32Encoder().Encode(stepSix).ToUpper();
         }
     }
 }
