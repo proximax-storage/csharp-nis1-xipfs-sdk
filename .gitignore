@@ -183,3 +183,7 @@ $RECYCLE.BIN/
 
 # Visual Studio 2014 CTP
 **/*.sln.ide
+.vs/Io.Xpx/DesignTimeBuild/.dtbcache
+.vs/Io.Xpx/lut/0
+.vs/Io.Xpx/lut/16444/b
+.vs/Io.Xpx/lut/16444/t
