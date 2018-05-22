@@ -17,7 +17,7 @@ namespace IO.XPX.Standard.Facades
                 Stream dataStream;
                 WebRequest request = WebRequest.Create(url);
                 request.ContentType = "application/json";
-                request.Method = "GET";
+                request.Method = method;
 
                 WebResponse response = request.GetResponse();
 
