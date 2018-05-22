@@ -5,7 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CSharp2nem" Version="2.0.20" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Facades\" />
+    <Folder Include="Models\" />
+    <Folder Include="Client\" />
   </ItemGroup>
 
 </Project>
