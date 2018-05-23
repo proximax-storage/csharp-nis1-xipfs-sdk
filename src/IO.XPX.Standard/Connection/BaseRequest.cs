@@ -1,4 +1,5 @@
-﻿using IO.XPX.Standard.Models;
+﻿using IO.XPX.Standard.Connection;
+using IO.XPX.Standard.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -6,23 +7,30 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace IO.XPX.Standard.Facades
+namespace IO.XPX.Standard.Connection
 {
-    public static class BaseRequest
+    public class RestRequest
     {
-        private static GenericResponse<T> CreateAPIRequest<T>(string url , string method) where T : class
+        private string BaseURL;
+        public RestRequest(string baseUrl)
+        {
+            this.BaseURL = baseUrl;
+        }
+
+        private GenericResponse<T> CreateAPIRequest<T>(string url , string method, QueryParam parameters = null, object body = null, Action<Stream> action = null) where T : class
         {
             try
             {
-                Stream dataStream;
-                WebRequest request = WebRequest.Create(url);
+                WebRequest request = WebRequest.Create(this.BaseURL + url);
                 request.ContentType = "application/json";
                 request.Method = method;
+                request.Timeout = 30;
 
                 WebResponse response = request.GetResponse();
 
                 var status = ((HttpWebResponse)response).StatusDescription;
 
+                Stream dataStream;
                 dataStream = response.GetResponseStream();
 
                 StreamReader reader = new StreamReader(dataStream);
@@ -40,8 +48,7 @@ namespace IO.XPX.Standard.Facades
                 return new GenericResponse<T>() { ErrorMessage = ex.Message };
             }
         }
-
-        public static GenericResponse<T> GET<T>(string url) where T : class => CreateAPIRequest<T>(url, "GET");
-        public static GenericResponse<T> POST<T>(string url) where T : class => CreateAPIRequest<T>(url, "POST");
+        public GenericResponse<T> GET<T>(string url) where T : class => CreateAPIRequest<T>(url, "GET");
+        public GenericResponse<T> POST<T>(string url) where T : class => CreateAPIRequest<T>(url, "POST");
     }
 }

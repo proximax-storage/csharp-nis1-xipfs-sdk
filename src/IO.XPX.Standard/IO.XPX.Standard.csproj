@@ -8,10 +8,12 @@
     <PackageReference Include="CSharp2nem" Version="2.0.20" />
     <PackageReference Include="Ipfs.Api" Version="0.20.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="RestSharp" Version="106.2.2" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Client\" />
+    <Folder Include="Facades\" />
   </ItemGroup>
 
 </Project>

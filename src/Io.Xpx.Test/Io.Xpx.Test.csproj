@@ -59,9 +59,14 @@ Contact: proximax.storage@proximax.io
   </ItemGroup>
   <ItemGroup>
     <Compile Include="**\*.cs" Exclude="obj\**" />
+    <Compile Include="Facades\Download.cs" />
   </ItemGroup>
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\IO.XPX.Standard\IO.XPX.Standard.csproj">
+      <Project>{2722601f-5885-4cfa-af04-dc2e63a4265b}</Project>
+      <Name>IO.XPX.Standard</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Io.Xpx\Io.Xpx.csproj">
       <Project>{ED571066-B89A-416E-8AFE-82E16FCA34D8}</Project>
       <Name>Io.Xpx</Name>
