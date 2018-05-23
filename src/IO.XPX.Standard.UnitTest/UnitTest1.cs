@@ -10,7 +10,7 @@ namespace IO.XPX.Standard.UnitTest
         public void TestMethod1()
         {
             var _download = new Api.Download();
-            Assert.AreEqual(0, _download.DownloadBase64());
+            Assert.AreEqual(0, _download.Test());
         }
     }
 }
