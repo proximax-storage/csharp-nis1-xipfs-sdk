@@ -2,18 +2,18 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("IO.XPX.UnitTest")]
+[assembly: AssemblyTitle("IO.XPX.Standard.UnitTest")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("IO.XPX.UnitTest")]
+[assembly: AssemblyProduct("IO.XPX.Standard.UnitTest")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]
 
-[assembly: Guid("93fb5f5a-cdd8-492c-b085-bf66bd533f71")]
+[assembly: Guid("eed821a4-8a34-4c52-9eea-04ed304705af")]
 
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]

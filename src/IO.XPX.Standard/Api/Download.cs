@@ -63,5 +63,7 @@ namespace IO.XPX.Standard.Api
             return downloadData;
         }
 
+        public int Test() => 0;
+
     }
 }
