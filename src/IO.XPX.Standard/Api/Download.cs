@@ -5,7 +5,14 @@ using System.Text;
 using CSharp2nem;
 using CSharp2nem.CryptographicFunctions;
 using CSharp2nem.Utils;
+using CSharp2nem.Connectivity;
+using CSharp2nem.Model;
+using CSharp2nem.PrepareHttpRequests;
+using CSharp2nem.ResponseObjects.Transaction;
+
 using Newtonsoft.Json;
+
+using System.IO;
 
 using IO.XPX.Standard.Facades;
 using IO.XPX.Standard.Facades.model;
@@ -40,6 +47,7 @@ namespace IO.XPX.Standard.Api
             if (peerConnection == null)
                 throw new Exception();
 
+            
         }
 
 
@@ -47,6 +55,9 @@ namespace IO.XPX.Standard.Api
         {
             DownloadData downloadData = new DownloadData();
             byte[] securedResponse = null;
+
+            Transactions.TransactionData transactionMetaDataPair;
+            
 
 
             return downloadData;
