@@ -17,7 +17,7 @@ using System.IO;
 using IO.XPX.Standard.Facades;
 using IO.XPX.Standard.Facades.model;
 
-namespace IO.XPX.Standard.Api
+namespace IO.XPX.Standard.Facades
 {
     public interface PeerConnection
     {
@@ -31,11 +31,11 @@ namespace IO.XPX.Standard.Api
     public class Download
     {
 
-        
+
 
         private PeerConnection peerConnection;
 
-        
+
 
         public Download()
         {
@@ -47,7 +47,7 @@ namespace IO.XPX.Standard.Api
             if (peerConnection == null)
                 throw new Exception();
 
-            
+
         }
 
 
@@ -57,7 +57,7 @@ namespace IO.XPX.Standard.Api
             byte[] securedResponse = null;
 
             Transactions.TransactionData transactionMetaDataPair;
-            
+
 
 
             return downloadData;

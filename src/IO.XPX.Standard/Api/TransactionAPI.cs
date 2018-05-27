@@ -10,10 +10,10 @@ namespace IO.XPX.Standard.Api
 {
     class TransactionAPI
     {
-        Transactions.TransactionData transactionData getTransaction(string hash)
+        Transactions.TransactionData getTransaction(string hash)
         {
 
-            Transactions.TransactionData trans;
+            Transactions.TransactionData trans = new Transactions.TransactionData;
              
            
 
