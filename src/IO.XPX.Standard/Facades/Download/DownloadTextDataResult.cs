@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace IO.XPX.Standard.Api
+namespace IO.XPX.Standard.Facades.Download
 {
-    class NodeAPI
+    class DownloadTextDataResult
     {
-        
     }
 }
