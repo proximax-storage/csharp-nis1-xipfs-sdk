@@ -13,7 +13,7 @@ namespace IO.XPX.Standard.Api
         Transactions.TransactionData getTransaction(string hash)
         {
 
-            Transactions.TransactionData trans = new Transactions.TransactionData;
+            Transactions.TransactionData trans = new Transactions.TransactionData();
              
            
 
