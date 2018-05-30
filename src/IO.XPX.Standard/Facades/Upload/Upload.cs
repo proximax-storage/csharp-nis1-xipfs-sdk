@@ -4,7 +4,7 @@ using System.Text;
 
 namespace IO.XPX.Standard.Facades.Upload
 {
-    class Upload
+    public class Upload
     {
     }
 }
