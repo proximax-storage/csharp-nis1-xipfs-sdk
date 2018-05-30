@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Text;
 using CSharp2nem.Model.Mosaics;
 using CSharp2nem.Connectivity;
+using CSharp2nem.Utils;
 namespace IO.XPX.Standard.Models
 {
     class XpxSdkGlobalConstants
     {
-        //timeprovider
-        //node_endpoint
-        //ipfs
         //fusestubfs
         //fusestubfs
 
+        public static readonly DateTime TIME_PROVIDER = new DateTime();
 
         private static string ipfsMountPoint = "/ipfs";
 
@@ -30,21 +29,6 @@ namespace IO.XPX.Standard.Models
 
         public static readonly string[] GLOBAL_GATEWAYS
             = { "https://ipfs.io", "https://gateway.ipfs.io" };
-
-        public static bool isLocal = false;
-
-        // fee calculator ???? where to get this
-
-        // mosaic fee information lookup
-
-        public static string getWebsocketUri()
-        {
-            StringBuilder builder = new StringBuilder();
-
-            builder.Append("ws://").Append()
-        }
-
-        CSharp2nem.Connectivity.Connection.AsyncMethodCaller
 
     }
 }
