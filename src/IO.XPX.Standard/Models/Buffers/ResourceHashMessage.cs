@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using FlatBuffers;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace IO.XPX.Standard.Models.Buffers
 {
@@ -17,7 +18,7 @@ namespace IO.XPX.Standard.Models.Buffers
 
         public static ResourceHashMessage getRootAsResourceHashMessage(ByteBuffer _bb, ResourceHashMessage obj)
         {
-            return new ResourceHashMessage();
+            return (obj.__assign(_bb.GetInt(_bb.Position) + _bb.Position, _bb));
         }
 
         public void __init(int _i, ByteBuffer _bb)
@@ -260,6 +261,23 @@ namespace IO.XPX.Standard.Models.Buffers
         public static void finishResourceHashMessageBuffer(FlatBufferBuilder builder, int offset)
         {
             builder.Finish(offset);
+        }
+
+
+        /// <summary>
+        /// Converts byte to object
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns>ByteBuffer</returns>
+        public static ByteBuffer convertToByteBufferObj(byte[] obj)
+        {
+            MemoryStream memStream = new MemoryStream();
+            BinaryFormatter binForm = new BinaryFormatter();
+            memStream.Write(obj, 0, obj.Length);
+            memStream.Seek(0, SeekOrigin.Begin);
+            ByteBuffer bbobj = (ByteBuffer)binForm.Deserialize(memStream);
+
+            return bbobj;
         }
     }
 }
