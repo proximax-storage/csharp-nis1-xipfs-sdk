@@ -4,7 +4,8 @@ using System.Text;
 
 namespace IO.XPX.Standard.Builder.Steps
 {
-    interface ReceiverOrSenderPublicKeyStep
+    interface ReceiverOrSenderPublicKeyStep<T>
     {
+        T receiverOrSenderPublicKey(string receiverOrSenderPublicKey);
     }
 }

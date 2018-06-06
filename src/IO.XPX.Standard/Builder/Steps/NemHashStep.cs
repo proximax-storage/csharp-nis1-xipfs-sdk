@@ -4,7 +4,8 @@ using System.Text;
 
 namespace IO.XPX.Standard.Builder.Steps
 {
-    interface NemHashStep
+    interface NemHashStep<T>
     {
+        T nemHash(string nemHash);
     }
 }

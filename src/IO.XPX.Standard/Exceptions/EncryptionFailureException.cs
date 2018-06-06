@@ -10,5 +10,10 @@ namespace IO.XPX.Standard.Exceptions
         {
             throw new Exception(message);
         }
+
+        public EncryptionFailureException(string message, Exception e)
+        {
+            throw new Exception(message, e.InnerException);
+        }
     }
 }

@@ -6,5 +6,6 @@ namespace IO.XPX.Standard.Websockets
 {
     class ConfirmedTransactionWebSocketClient
     {
+
     }
 }

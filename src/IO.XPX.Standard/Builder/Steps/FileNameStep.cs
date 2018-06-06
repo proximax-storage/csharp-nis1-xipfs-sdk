@@ -4,7 +4,8 @@ using System.Text;
 
 namespace IO.XPX.Standard.Builder.Steps
 {
-    interface FileNameStep
+    interface FileNameStep<T>
     {
+        T fileName(string fileName);
     }
 }

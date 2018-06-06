@@ -4,7 +4,8 @@ using System.Text;
 
 namespace IO.XPX.Standard.Builder.Steps
 {
-    interface TextDataStep
+    interface TextDataStep<T>
     {
+        T data(string data);
     }
 }

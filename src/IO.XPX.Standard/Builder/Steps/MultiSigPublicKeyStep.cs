@@ -4,7 +4,8 @@ using System.Text;
 
 namespace IO.XPX.Standard.Builder.Steps
 {
-    interface MultiSigPublicKeyStep
+    interface MultiSigPublicKeyStep<T>
     {
+        T multisigPublicKeyStep(string multisigPublicKeyStep);
     }
 }

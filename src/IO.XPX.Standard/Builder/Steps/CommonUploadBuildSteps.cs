@@ -4,7 +4,9 @@ using System.Text;
 
 namespace IO.XPX.Standard.Builder.Steps
 {
-    interface CommonUploadBuildSteps
+    interface CommonUploadBuildSteps<T> : 
+        KeywordsStep<T>, MetaDataStep<T>, MosiacsStep<T>, PrivacyStrategyUploadStep<T> 
     {
+
     }
 }

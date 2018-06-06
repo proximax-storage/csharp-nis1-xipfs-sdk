@@ -4,7 +4,8 @@ using System.Text;
 
 namespace IO.XPX.Standard.Builder.Steps
 {
-    interface MetaDataStep
+    interface MetaDataStep<T>
     {
+        T metadata(Dictionary<string, string> metadata);
     }
 }

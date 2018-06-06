@@ -4,7 +4,8 @@ using System.Text;
 
 namespace IO.XPX.Standard.Builder.Steps
 {
-    interface ContentTypeStep
+    interface ContentTypeStep<T>
     {
+        T contentType(string contentType);
     }
 }

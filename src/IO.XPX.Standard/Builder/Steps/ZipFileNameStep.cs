@@ -4,7 +4,8 @@ using System.Text;
 
 namespace IO.XPX.Standard.Builder.Steps
 {
-    interface ZipFileNameStep
+    interface ZipFileNameStep<T>
     {
+        T zipFileName(string name);
     }
 }

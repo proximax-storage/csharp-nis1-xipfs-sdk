@@ -4,7 +4,8 @@ using System.Text;
 
 namespace IO.XPX.Standard.Builder.Steps
 {
-    interface BinaryDataStep
+    interface BinaryDataStep<T>
     {
+        T data(byte[] data);
     }
 }
