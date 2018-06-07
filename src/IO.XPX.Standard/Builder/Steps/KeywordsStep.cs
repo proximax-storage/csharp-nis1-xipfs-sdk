@@ -4,7 +4,8 @@ using System.Text;
 
 namespace IO.XPX.Standard.Builder.Steps
 {
-    interface KeywordsStep
+    interface KeywordsStep<T>
     {
+        T keywords(string keywords);
     }
 }
