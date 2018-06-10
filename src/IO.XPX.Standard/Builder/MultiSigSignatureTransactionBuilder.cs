@@ -90,6 +90,8 @@ namespace IO.XPX.Standard.Builder
 
             private static Amount fee;
 
+            
+
        }
 
 
