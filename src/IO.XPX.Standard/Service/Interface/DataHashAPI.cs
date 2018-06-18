@@ -6,5 +6,6 @@ namespace IO.XPX.Standard.Service.Interface
 {
     interface DataHashAPI
     {
+        string generateHashForDataOnlyUsingPOST(byte[] data);
     }
 }

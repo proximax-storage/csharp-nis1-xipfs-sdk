@@ -6,5 +6,6 @@ namespace IO.XPX.Standard.Service.Interface
 {
     interface DirectoryLoadAPI
     {
+        Object loadDirectoryUsingGET(string nemHash);
     }
 }
